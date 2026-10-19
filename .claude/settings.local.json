@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(docker --version)",
+      "Bash(python -c \"import importlib.util as u; print\\({p: bool\\(u.find_spec\\(p\\)\\) for p in ['aiogram','sqlalchemy','alembic','pytest','httpx','pydantic','asyncpg']}\\)\")",
+      "Bash(python -m pip install \"SQLAlchemy>=2.0\" \"alembic>=1.13\" \"pytest>=8.0\" \"pytest-asyncio>=0.23\" \"asyncpg>=0.29\" \"aiosqlite>=0.20\" \"httpx>=0.27\" \"ruff>=0.6\" \"mypy>=1.11\")",
+      "Bash(python -c \"import importlib.util as u; print\\({p: bool\\(u.find_spec\\(p\\)\\) for p in ['aiogram','sqlalchemy','alembic','pytest','httpx','pydantic_settings','asyncpg','aiosqlite','ruff']}\\)\")",
+      "Bash(python -m pip install \"pydantic-settings>=2.5,<3.0\")",
+      "Bash(python -c \"from src.db.models import Base; print\\(len\\(Base.metadata.tables\\), sorted\\(Base.metadata.tables\\)\\)\")",
+      "Bash(python -m alembic revision --autogenerate -m \"initial schema\")",
+      "Bash(python -m alembic revision --autogenerate -m \"initial schema\" -x offline=true)",
+      "Bash(ruff check *)",
+      "Bash(ruff format *)",
+      "Bash(python -m compileall -q src tests alembic)",
+      "Bash(pytest -q)",
+      "Bash(python -m pip install -e .[dev])",
+      "Bash(mypy src *)"
+    ]
+  }
+}
